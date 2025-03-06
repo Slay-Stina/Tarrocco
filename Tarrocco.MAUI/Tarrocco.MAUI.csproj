@@ -1,0 +1,250 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Tarrocco.MAUI</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Tarrocco.MAUI</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.tarrocco.maui</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<WindowsPackageType>None</WindowsPackageType>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\Cups\ace_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\eight_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\five_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\four_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\king_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\knight_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\nine_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\page_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\queen_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\seven_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\six_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\ten_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\three_of_cups.jpg" />
+	  <None Remove="Resources\Images\Cups\two_of_cups.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\death.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\judgement.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\justice.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\strength.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\temperance.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_chariot.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_devil.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_emperor.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_empress.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_fool.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_hanged_man.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_hermit.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_hierophant.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_high_priestess.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_lovers.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_magician.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_moon.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_star.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_sun.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_tower.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\the_world.jpg" />
+	  <None Remove="Resources\Images\Major_Arcana\wheel_of_fortune.jpg" />
+	  <None Remove="Resources\Images\Pentacles\ace_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\eight_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\five_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\four_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\king_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\knight_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\nine_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\page_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\queen_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\seven_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\six_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\ten_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\three_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Pentacles\two_of_pentacles.jpg" />
+	  <None Remove="Resources\Images\Swords\ace_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\eight_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\five_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\four_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\king_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\knight_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\nine_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\page_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\queen_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\seven_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\six_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\ten_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\three_of_swords.jpg" />
+	  <None Remove="Resources\Images\Swords\two_of_swords.jpg" />
+	  <None Remove="Resources\Images\Wands\ace_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\eight_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\five_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\four_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\king_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\knight_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\nine_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\page_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\queen_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\seven_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\six_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\ten_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\three_of_wands.jpg" />
+	  <None Remove="Resources\Images\Wands\two_of_wands.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.5.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\CardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Data\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Cups\ace_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\eight_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\five_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\four_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\king_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\knight_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\nine_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\page_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\queen_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\seven_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\six_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\ten_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\three_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Cups\two_of_cups.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\death.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\judgement.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\justice.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\strength.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\temperance.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_chariot.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_devil.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_emperor.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_empress.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_fool.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_hanged_man.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_hermit.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_hierophant.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_high_priestess.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_lovers.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_magician.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_moon.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_star.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_sun.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_tower.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\the_world.jpg" />
+	  <MauiImage Include="Resources\Images\Major_Arcana\wheel_of_fortune.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\ace_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\eight_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\five_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\four_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\king_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\knight_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\nine_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\page_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\queen_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\seven_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\six_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\ten_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\three_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Pentacles\two_of_pentacles.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\ace_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\eight_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\five_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\four_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\king_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\knight_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\nine_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\page_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\queen_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\seven_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\six_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\ten_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\three_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Swords\two_of_swords.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\ace_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\eight_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\five_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\four_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\king_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\knight_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\nine_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\page_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\queen_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\seven_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\six_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\ten_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\three_of_wands.jpg" />
+	  <MauiImage Include="Resources\Images\Wands\two_of_wands.jpg" />
+	</ItemGroup>
+
+</Project>
