@@ -2,9 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tarrocco.MAUI.MainPage"
-             Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
 
     <HorizontalStackLayout
             Spacing="25">
@@ -20,7 +19,12 @@
         <Button
                 Text="Cards" 
                 Clicked="CardsPage_ButtonClicked"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill"/>
+        <Button
+            Text="Fortune" 
+            Clicked="FortunePage_ButtonClicked"
+            HorizontalOptions="Fill" />
+            
         </VerticalStackLayout>
     </HorizontalStackLayout>
 </ContentPage>

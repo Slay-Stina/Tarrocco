@@ -8,6 +8,11 @@ namespace Tarrocco.MAUI.ViewModels;
 
 class CardPageViewModel : INotifyPropertyChanged
 {
+    private static CardPageViewModel _instance = new CardPageViewModel();
+    public static CardPageViewModel CPVM()
+    {
+        return _instance;
+    }
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private ObservableCollection<Card> _cards;
@@ -26,7 +31,7 @@ class CardPageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
     }
 
-    public CardPageViewModel()
+    private CardPageViewModel()
     {
         Cards = new ObservableCollection<Card>();
         LoadCardsAsync();

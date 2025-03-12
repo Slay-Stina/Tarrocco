@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Tarrocco.MAUI"
     xmlns:views="clr-namespace:Tarrocco.MAUI.Views"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutItemIsVisible="False"
     IsVisible="false"
     Title="Tarrocco.MAUI">
 
@@ -17,5 +18,9 @@
         Title="Cards"
         ContentTemplate="{DataTemplate views:CardPage}"
         Route="CardPage" />
+    <ShellContent
+        Title="Fortune"
+        ContentTemplate="{DataTemplate views:FortunePage}"
+        Route="FortunePage" />
 
 </Shell>
