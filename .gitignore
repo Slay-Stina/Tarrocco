@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 DataExtensions.cs
+GemeniStartup.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -362,3 +363,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Tarrocco.MAUI/Data/GeminiStartup.cs
+/Tarrocco.MAUI/AI/GeminiStartup.cs
