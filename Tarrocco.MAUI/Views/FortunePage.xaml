@@ -22,9 +22,10 @@
                WidthRequest="300" 
                x:Name="FortuneEntry"
                />
-            <Button Grid.Column="1" Text="Få en spådom" Padding="5"  WidthRequest="100" Clicked="TestAI_ButtonClicked" />
+            <Button Grid.Column="1" Text="Få en spådom" Padding="5"  WidthRequest="120" Clicked="DI_TEST" />
         </Grid>
-        <Label FontSize="Default" x:Name="Preamble" Opacity="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="600" HeightRequest="50"/>
+        
+        <Label IsVisible="False" FontSize="Default" x:Name="Preamble" Opacity="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="600" HeightRequest="50"/>
         
         <CollectionView ItemsSource="{Binding FortuneCards}" WidthRequest="630">
             <CollectionView.ItemsLayout>
@@ -41,10 +42,10 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <VerticalStackLayout WidthRequest="800" Spacing="10">
-            <Label x:Name="CardOneFortune" Opacity="0"/>
-            <Label x:Name="CardTwoFortune" Opacity="0"/>
-            <Label x:Name="CardThreeFortune" Opacity="0"/>
-            <Label x:Name="FortuneSummary" Opacity="0"/>
+            <!--<Label x:Name="CardOneFortune" Opacity="0" Style="{StaticResource BodyCenter}"/>
+            <Label x:Name="CardTwoFortune" Opacity="0" Style="{StaticResource BodyCenter}"/>
+            <Label x:Name="CardThreeFortune" Opacity="0" Style="{StaticResource BodyCenter}"/>-->
+            <Label x:Name="FortuneSummary" Opacity="0" Style="{StaticResource BodyCenter}"/>
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
