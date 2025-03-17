@@ -1,15 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
+using Tarrocco.MAUI.Data.Repositories;
 using Tarrocco.MAUI.Models;
-using Tarrocco.MAUI.Views;
 
 namespace Tarrocco.MAUI.ViewModels;
 
 public class FortunePageViewModel : INotifyPropertyChanged
 {
-    public List<Card> Cards = new List<Card>();
+    public ICommand GoBackCommand { get; }
+
+    private static List<Card> _cardRepo = CardRepository.GetCards();
+    public List<Card> Cards = new List<Card>(_cardRepo);
+
     public event PropertyChangedEventHandler? PropertyChanged;
     private ObservableCollection<Card> _fortuneCards;
     public ObservableCollection<Card> FortuneCards
@@ -22,11 +25,8 @@ public class FortunePageViewModel : INotifyPropertyChanged
         }
     }
 
-    public ICommand GoBackCommand { get; }
-
     public FortunePageViewModel()
     {
-        PopulateCards();
         FortuneCards = new ObservableCollection<Card>();
         GoBackCommand = new Command(GoBack);
     }
@@ -36,19 +36,9 @@ public class FortunePageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
     }
 
-    private void PopulateCards()
-    {
-        Cards.Clear();
-        var cpvm = CardPageViewModel.CPVM();
-        foreach (var card in cpvm.Cards)
-        {
-            Cards.Add(card);
-        }
-    }
-
     public void PickThreeCards()
     {
-        PopulateCards();
+        Cards = new List<Card>(_cardRepo);
         FortuneCards.Clear();
         Random random = new Random();
         for (int i = 0; i < 3; i++)

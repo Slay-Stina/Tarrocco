@@ -15,7 +15,7 @@
             VerticalOptions="Start"
             Margin="10"
             />
-            <CollectionView ItemsSource="{Binding Cards}">
+            <CollectionView ItemsSource="{Binding CardList}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="7" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
                 </CollectionView.ItemsLayout>

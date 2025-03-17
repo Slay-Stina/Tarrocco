@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Tarrocco.MAUI.Models;
+﻿namespace Tarrocco.MAUI.Models;
 
 public partial class EfmigrationsLock
 {

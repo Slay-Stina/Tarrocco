@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
-using Tarrocco.MAUI.ViewModels;
-using Tarrocco.MAUI.Views;
+﻿using Tarrocco.MAUI.Views;
 
 namespace Tarrocco.MAUI;
 
