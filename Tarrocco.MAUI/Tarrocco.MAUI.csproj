@@ -248,4 +248,8 @@
 	  <MauiImage Include="Resources\Images\Wands\two_of_wands.jpg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Resource Include="Resources\Fonts\OLDENGL.TTF" />
+	</ItemGroup>
+
 </Project>

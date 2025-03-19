@@ -24,9 +24,17 @@ public class CardRepository
     // Hämta alla kort från databasen
     private async Task<List<Card>> LoadAllCardsAsync()
     {
-        var cards = await _context.Cards.ToListAsync();
-        Debug.WriteLine("Cards loaded");
-        return cards; //await _context.Cards.ToListAsync();
+        try
+        {
+            var cards = await _context.Cards.ToListAsync();
+            Debug.WriteLine("Cards loaded");
+            return cards;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return new List<Card>();
+        }
     }
 
     // Lägg till ett nytt kort i databasen

@@ -4,27 +4,34 @@
              x:Class="Tarrocco.MAUI.MainPage"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
-
-    <HorizontalStackLayout
-            Spacing="25">
+    <Grid>
         <Image
                 Source="tarrocco_logo.jpg"
-                Aspect="AspectFit" />
-        <VerticalStackLayout>
-        <Label
-                Text="TARROCCO"
-                Style="{StaticResource Headline}"
-                />
-
-        <Button
-                Text="Cards" 
+                Aspect="AspectFill" />
+        <Grid
+        Padding="50"
+        ColumnDefinitions="*,*">
+            <Button
+                Grid.Column="0"
+                Text="Kort"
+                FontSize="Header"
+                WidthRequest="200"
+                HeightRequest="100"
                 Clicked="CardsPage_ButtonClicked"
-                HorizontalOptions="Fill"/>
+                VerticalOptions="End" 
+                
+                />
         <Button
-            Text="Fortune" 
+            Grid.Column="1"
+            Text="Spådom" 
+            FontSize="Header"
+            WidthRequest="200"
+            HeightRequest="100"
             Clicked="FortunePage_ButtonClicked"
-            HorizontalOptions="Fill" />
+            VerticalOptions="End" 
             
-        </VerticalStackLayout>
-    </HorizontalStackLayout>
+            />
+
+    </Grid>
+    </Grid>
 </ContentPage>

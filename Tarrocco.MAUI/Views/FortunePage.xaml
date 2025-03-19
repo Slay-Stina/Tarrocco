@@ -4,7 +4,9 @@
              x:Class="Tarrocco.MAUI.Views.FortunePage"
              Title="FortunePage"
              NavigationPage.HasNavigationBar="False"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutItemIsVisible="False">
+    
     <VerticalStackLayout Spacing="20">
         <Button
             Text="Tillbaka"
@@ -15,6 +17,7 @@
             />
         <Label Text="Få din spådom besvarad"
                Style="{StaticResource Headline}"
+               
                />
         <Grid
             ColumnDefinitions="auto,auto" HorizontalOptions="Center" ColumnSpacing="10">

@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 
     private async void CardsPage_ButtonClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///CardPage");
+        await Navigation.PushAsync(new CardPage());
     }
 
     private async void FortunePage_ButtonClicked(object sender, EventArgs e)

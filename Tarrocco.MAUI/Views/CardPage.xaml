@@ -7,7 +7,7 @@
              Shell.NavBarIsVisible="False">
     
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Padding="30">
             <Button
             Text="Back"
             Clicked="BackButton_Clicked"
@@ -15,6 +15,7 @@
             VerticalOptions="Start"
             Margin="10"
             />
+            <Label Text="Tarotkort" Style="{StaticResource Headline}"/>
             <CollectionView ItemsSource="{Binding CardList}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="7" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
@@ -25,20 +26,24 @@
                         StrokeShape="RoundRectangle 20"
                         Background="#eedbc7"
                         Padding="10">
-                            <Grid
-                        RowDefinitions="*,30">
-                                <Image
-                                Grid.Row="0"
-                                Source="{Binding ImagePath}"
-                                Aspect="AspectFill"
-                                />
-                                <Label
-                               Grid.Row="1"
-                               Text="{Binding Name}"
-                               VerticalOptions="End"
-                               HorizontalTextAlignment="Center"
-                               TextColor="Black"
-                               />
+                            <Grid>
+                                
+                                <Image x:Name="CardImg"
+                                       Grid.Row="0"
+                                       Source="{Binding ImagePath}"
+                                       Aspect="AspectFill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnCardTapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                
+                                <VerticalStackLayout x:Name="CardInfoLayout" BackgroundColor="IndianRed" Padding="5" Spacing="10" Opacity="0.8" IsVisible="False">
+                                    <Label Text="{Binding Name}" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Description}" FontSize="14" HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding Effect, 
+                                        StringFormat='Effect:&#x0a;{0}'}" FontSize="14" HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding Value, StringFormat='Value: {0}'}" FontSize="14"/>
+                                </VerticalStackLayout>
                             </Grid>
                         </Border>
                     </DataTemplate>
